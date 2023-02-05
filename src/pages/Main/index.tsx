@@ -1,15 +1,16 @@
+import { Sidebar } from '../../components/Sidebar'
 import { Container } from './styles'
+
 
 export default function Main() {
   return (
     <Container>
-      <img
-        src='https://devsamurai-materials.s3.amazonaws.com/templates/avatar-gradient-dark.svg'
-        height='256'
-        alt='Dev Samurai'
-      />
-      <h1>Fala Samurai!</h1>
-      <p>Esse é o template typescript básico da Dev Samurai para React.</p>
+      <Sidebar />
+      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero quis odio error praesentium maiores vel!</h1>
+      
     </Container>
   )
+
+
+  
 }
