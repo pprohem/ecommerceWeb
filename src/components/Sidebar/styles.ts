@@ -1,18 +1,48 @@
-import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import styled, { css } from "styled-components";
+
+interface ContainerProps {
+    isMenuOpen: boolean; 
+}
 
 
-export const Container = styled.aside `
+export const Container = styled.aside<ContainerProps> `
     background-color: ${(props) => props.theme.colors.red};
     
-    width: 7.75rem;
 
+    ${({isMenuOpen}) => 
+     isMenuOpen ? css`width: 16.3rem; ` : css `width: 7.75rem; `
+    }
+
+
+  
     padding: 2rem 0;
     overflow: hidden;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    transition: width 0.5s; 
     
+
+
+    @media (max-width: 768px) { 
+        width: 100%;
+        height: 5rem;
+        display: flex;
+        margin-top: 5px;
+        justify-content: center;
+        align-items: center;
+        button{
+            display: none;
+        }
+        span{
+            display: none
+        }
+
+        
+    }
 ` 
 
 
@@ -43,7 +73,7 @@ export const Navbar = styled.nav`
 
 `
 
-export const Link = styled.a `
+export const Link = styled(NavLink) `
 
     width: fit-content;
     position: relative;
@@ -54,7 +84,8 @@ export const Link = styled.a `
     display: flex;
     align-items: center;
     gap:2rem;
-    margin-bottom: 45px;
+    margin-bottom: 20px;
+    
 
     svg{
         fill: ${({theme}) => theme.colors.white};
@@ -95,4 +126,18 @@ export const Link = styled.a `
         }
     }
 
+    @media (max-width: 768px) {
+        margin-bottom: 0;
+        
+        svg{
+           width: 3.55rem ;
+           height: 3.5rem;
+        }
+        &.active{ 
+        &::after{
+                display: none
+            }
+        }
+    }
+  
 `

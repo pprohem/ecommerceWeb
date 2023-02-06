@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ReactComponent as BurgerIcon } from '../../assets/burger.svg';
 import { ReactComponent as IceCreamIcon } from '../../assets/ice-cream.svg';
 import { ReactComponent as PizzaIcon } from '../../assets/pizza.svg';
@@ -8,37 +9,46 @@ import { Button, Container, Link, Navbar } from "./styles";
  
 
 export function Sidebar ( )  {
+    const [menuOpen, setMenuOpen] = useState(false)
+
+
+    function handleToggleMenu () {
+         setMenuOpen(!menuOpen)
+         console.log(menuOpen)
+    }
+
     return(
-        <Container>
+        <Container isMenuOpen={menuOpen}>
             
-            <Button type='button'>
+            <Button onClick ={handleToggleMenu} type='button'>
+                
                 <img src={menuImg} alt="botão para abrir menu" />
             </Button>
             <Navbar>
                 <ul>
                     <li>
-                        <Link className="active" href= "#">
+                        <Link to="/">
                             <BurgerIcon  />
                             <span>
                                 Hamburguer
                             </span>
                         </Link>
                         
-                        <Link  href= "#">
+                        <Link  to="pizzas">
                             <PizzaIcon  />
                             <span>
                                 Pizza
                             </span>
                         </Link>
                         
-                        <Link  href= "#">
+                        <Link to="bebidas">
                             <SodaPopIcon />
                             <span>
                                 Bebidas
                             </span>
                         </Link>
                         
-                        <Link  href= "#">
+                        <Link to="sobremesas">
                             <IceCreamIcon  />
                             <span>
                                 Sobremesas

@@ -1,13 +1,18 @@
+import { Outlet } from 'react-router-dom'
+import logoImg from '../../assets/logo.svg'
 import { Sidebar } from '../../components/Sidebar'
-import { Container } from './styles'
+import { Container, SectionLogo } from './styles'
+
 
 
 export default function Main() {
   return (
     <Container>
       <Sidebar />
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero quis odio error praesentium maiores vel!</h1>
-      
+      <SectionLogo>
+        <img src={logoImg} />
+        <Outlet />
+      </SectionLogo>
     </Container>
   )
 

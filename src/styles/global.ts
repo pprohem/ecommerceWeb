@@ -42,5 +42,9 @@ export const GlobalStyle = createGlobalStyle`
   ul,
   li {
     list-style: none;
+
+    @media (max-width: 768px) { 
+      display: flex
+    }
   }
 `
