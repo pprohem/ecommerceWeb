@@ -23,7 +23,7 @@ export const Container = styled.aside<ContainerProps> `
     flex-direction: column;
     align-items: center;
 
-    transition: width 0.5s; 
+    transition: width 0.3s; 
     
 
 

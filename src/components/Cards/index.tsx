@@ -1,4 +1,5 @@
 import { FiPlus } from 'react-icons/fi'
+import { currencyFormat } from '../../helpers/currencyFormat'
 import { Container } from "./styles"
 
 interface CardsProps { 
@@ -14,7 +15,7 @@ export default function Cards ({cards}: CardsProps) {
                 <img src={card.image} alt={card.name}/>
                 <p>{card.description}</p>
                 <div>
-                    <strong>{card.price}</strong>
+                    <strong>{currencyFormat(card.price)}</strong>
                     <button type ='button'>
                         <FiPlus/>
                     </button>
