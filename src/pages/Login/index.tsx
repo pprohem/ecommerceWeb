@@ -20,7 +20,6 @@ export default function LoginPage () {
         setPasswordShown(!passwordShown);
         
       };
-      console.log(username, password)
 
       async function handleSignIn () { 
         try {

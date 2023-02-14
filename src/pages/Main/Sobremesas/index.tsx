@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react"
 import Cards from "../../../components/Cards"
-
 import Head from "../../../components/Head"
 import SnackTitle from "../../../components/SnackTittle"
-import { getIceCreams } from "../../../services/api"
-export  default function Sobremesas (){
-    const [iceCreams, setIceCreams] = useState([])
-   
-    useEffect(() => {
-        (async () => {
-            const iceCreamRequest = await getIceCreams()
+import dessertService from "../../../services/Requests/dessertRequest"
 
-            setIceCreams(iceCreamRequest.data)
-            
-        })()
-    }, [])
+export  default function Sobremesas (){
+    const [desserts, setDesserts] = useState([])
     
+    
+    useEffect(() => {
+        dessertService
+        .getAll()
+        .then((res) => {
+            setDesserts(res.data.content)
+        })
+        .catch((err) => { 
+            console.error("ops! ocorreu um error: " + err)
+        })
+    }, [])
     return (
         <>
         <Head title='Sobremesas' description="Sobremesas deliciosas!"/>
         <SnackTitle>Sobremesas</SnackTitle>
-        <Cards cards={iceCreams} ></Cards>
+        <Cards cards={desserts} ></Cards>
     </>
     )
 }
