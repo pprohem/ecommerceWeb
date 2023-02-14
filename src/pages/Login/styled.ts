@@ -153,7 +153,7 @@ export const LoginInput = styled.input `
 
 `
 
-export const SubmitInput = styled.input `
+export const SubmitInput = styled.button `
     width: 80%;
     background-color: ${({theme})=> theme.colors.red};
     color: white;
@@ -171,6 +171,8 @@ export const SubmitInput = styled.input `
     
 
 `
+
+
 
 export const EyeButton = styled.button `
     background-color: black;

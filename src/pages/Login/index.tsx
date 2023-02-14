@@ -1,20 +1,36 @@
 import { useState } from 'react';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 import logoImg from '../../assets/logo.svg';
+import { useAuth } from '../../context/AuthProvider/useAuth';
 import {
     BoxLogin, Container, ContentDiv, DivAlign, DivText, EyeButton, FormGroup, FormLogin,
     ImageDiv, ImageLogin, Link, Log, LoginCard, LoginInput, LoginLabel, SubmitInput
 } from "./styled";
 
 export default function LoginPage () { 
+    const auth = useAuth()
+    const navigate = useNavigate();
     const [passwordShown, setPasswordShown] = useState(false);
-
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
 
     const togglePassword = () => {
         setPasswordShown(!passwordShown);
         
       };
+      console.log(username, password)
+
+      async function handleSignIn () { 
+        try {
+           await  auth.authenticate(username, password)
+
+           navigate("/mainpage")
+        } catch (error) {
+            console.log(error)
+        }
+      }
       
     return(
         
@@ -33,23 +49,23 @@ export default function LoginPage () {
                     <FormLogin>
                         <FormGroup>
                             <DivAlign>
-                                <LoginLabel htmlFor="username">Username:</LoginLabel>
+                                <LoginLabel htmlFor="username">USUARIO:</LoginLabel>
                             </DivAlign>
                            
-                            <LoginInput  type="text"/>
+                            <LoginInput value={username} onChange={(e) => setUsername(e.target.value)} type="text"/>
                         </FormGroup>
                             
                         <FormGroup >
                             
                             <DivAlign>
-                                <LoginLabel htmlFor="password">Password:</LoginLabel>
+                                <LoginLabel htmlFor="password">SENHA:</LoginLabel>
                                 {passwordShown ?
                                     <EyeButton onClick={togglePassword}> <BsEyeSlash size={20}  color={"white"}/>  </EyeButton>
                                     :
                                     <EyeButton onClick={togglePassword}> <BsEye size={20} color={"white"} />  </EyeButton> 
                                     }
                             </DivAlign>
-                                <LoginInput  type={passwordShown ? "text" : "password"}/>
+                                <LoginInput  type={passwordShown ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} />
                                     
 
                          
@@ -57,7 +73,8 @@ export default function LoginPage () {
                         </FormGroup>
                        
                         <FormGroup>
-                            <SubmitInput value="LOGIN" type="submit" />
+                            <SubmitInput onClick={handleSignIn} value="LOGIN" type="submit"     
+                            />
                         </FormGroup>
                         
                         <DivText>

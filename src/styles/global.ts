@@ -42,9 +42,13 @@ export const GlobalStyle = createGlobalStyle`
   ul,
   li {
     list-style: none;
+     
 
     @media (max-width: 768px) { 
-      display: flex
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
   }
 `

@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
-import { Button, Container, Div, DivForm, EyeButton, Input } from './styled';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { Container, Div, DivForm, EyeButton, LoginInput, SubmitInput } from './styled';
 
 export default function RegisterPage ( ) { 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [passwordShown, setPasswordShown] = useState(false);
     const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
     
@@ -15,7 +20,53 @@ export default function RegisterPage ( ) {
         setConfirmPasswordShown(!confirmPasswordShown);
         
       };
+    //   const handleSubmit = (event : any) => {
+    //     if ( password === "" || username === "" ) {
+    //         toast.error('📢 Os campos não podem ser nulos!', {
+    //             position: "bottom-right",
+    //             autoClose: 5000,
+    //             hideProgressBar: false,
+    //             closeOnClick: true,
+    //             pauseOnHover: true,
+    //             draggable: true,
+    //             progress: undefined,
+    //             theme: "colored",
+    //             });
+    //             return;
+    //     } 
+    //     if ( password !== passwordConfirmation) {
+    //         toast.error('📢 Senhas não conferem!', {
+    //             position: "bottom-right",
+    //             autoClose: 5000,
+    //             hideProgressBar: false,
+    //             closeOnClick: true,
+    //             pauseOnHover: true,
+    //             draggable: true,
+    //             progress: undefined,
+    //             theme: "colored",
+    //             });
+    //             return;
+    //     } 
+    //     event.preventDefault();
+         
+    //     const user = {
+    //       login: username,
+    //       password: password
+    //     };
   
+    //     userService.create(user).then((res) => {
+    //         toast.success('👌👌 Cadastrado com sucesso!', {
+    //             position: "bottom-right",
+    //             autoClose: 5000,
+    //             hideProgressBar: false,
+    //             closeOnClick: true,
+    //             pauseOnHover: true,
+    //             draggable: true,
+    //             progress: undefined,
+    //             theme: "colored",
+    //             });
+    //     });
+    // };
  
     
     
@@ -26,11 +77,11 @@ export default function RegisterPage ( ) {
             
             <Div>
                 <h4>USUARIO</h4>
-                <Input type="text" name="usuario" placeholder="Usuario" ></Input>
+                <LoginInput type="text" name="usuario" placeholder="USUARIO" ></LoginInput>
             </Div>
             <Div>
                 <h4>EMAIL</h4>
-                <Input type="text" name="usuario" placeholder="Email" ></Input>
+                <LoginInput type="text" name="usuario" placeholder="Email" ></LoginInput>
             </Div>
 
             <Div>
@@ -40,7 +91,7 @@ export default function RegisterPage ( ) {
                     :
                     <EyeButton onClick={togglePassword}> <BsEye size={20} color={"white"} />  </EyeButton> 
                 }
-                <Input type={passwordShown ? "text" : "password"} name="Password" placeholder="Senha"></Input>
+                <LoginInput type={passwordShown ? "text" : "password"} name="Password" placeholder="Senha"></LoginInput>
             </Div>
 
             <Div>
@@ -50,19 +101,13 @@ export default function RegisterPage ( ) {
                     :
                     <EyeButton onClick={confirmTogglePassword}> <BsEye size={20} color={"white"} />  </EyeButton> 
                }
-                 <Input type={confirmPasswordShown ? "text" : "password"} name="password"  placeholder="Confirmação da Senha"></Input>
+                 <LoginInput type={confirmPasswordShown ? "text" : "password"} name="password"  placeholder="Confirmação da Senha" />
             </Div>
 
-            <Button >
-                 SALVAR
-                <div className="arrow-wrapper">
-                 
-                    <div className="arrow"></div>
-
-                </div>
-            </Button>
+            <SubmitInput value="SALVAR" type="submit"     
+                            />
            
-
+           <ToastContainer />
 
 
         </DivForm>

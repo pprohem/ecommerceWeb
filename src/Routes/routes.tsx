@@ -10,10 +10,12 @@ import RegisterPage from '../pages/Register'
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path='signin' element={<LoginPage />}/>
+      <Route path='/' element={<LoginPage />}/>
       <Route path='signup' element={<RegisterPage />}/>
-      <Route path='/' element={<MainPage/>}>
-        <Route path='/' element={<BurgersPage/>}/>
+      
+      
+      <Route path='mainpage' element={<MainPage/>}>
+        <Route path='mainpage' element={<BurgersPage/>}/>
         <Route path='pizzas' element={<PizzasPage/>}/>
         <Route path='bebidas' element={<BebidasPage/>}/>
         <Route path='sobremesas' element={<SobremesasPage/>}/>

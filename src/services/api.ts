@@ -5,8 +5,9 @@ const api = axios.create({
 })
 
 
-const api2 = axios.create({
-  baseURL: "http://localhost:8080/categories/1"
+export const api2 = axios.create({
+  baseURL: "http://localhost:8080"
+  // baseURL: "https://james-api-production.up.railway.app/api"
 })
 
 export const getBurgers = () => api.get("/burgers")

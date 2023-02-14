@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BsCart } from 'react-icons/bs';
 import { ReactComponent as BurgerIcon } from '../../assets/burger.svg';
 import { ReactComponent as IceCreamIcon } from '../../assets/ice-cream.svg';
 import { ReactComponent as PizzaIcon } from '../../assets/pizza.svg';
@@ -14,7 +15,7 @@ export function Sidebar ( )  {
 
     function handleToggleMenu () {
          setMenuOpen(!menuOpen)
-         console.log(menuOpen)
+         
     }
 
     return(
@@ -27,7 +28,7 @@ export function Sidebar ( )  {
             <Navbar>
                 <ul>
                     <li>
-                        <Link to="/">
+                        <Link to="mainpage">
                             <BurgerIcon  />
                             <span>
                                 Hamburguer
@@ -54,6 +55,15 @@ export function Sidebar ( )  {
                                 Sobremesas
                             </span>
                         </Link>
+
+                        <Link to ="mainpage">
+
+                            <BsCart  color='#FFF'/>
+                            <span>
+                                Carrinho
+                            </span>
+                        </Link>
+
                     </li>
                 </ul>
             </Navbar>

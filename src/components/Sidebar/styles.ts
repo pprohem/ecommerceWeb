@@ -91,7 +91,8 @@ export const Link = styled(NavLink) `
         fill: ${({theme}) => theme.colors.white};
         width: 4rem;
         height: 4rem;
-        transition: fill 0.3s
+        transition: fill 0.3s;
+        margin-bottom: 0.5rem;
     }
 
     span{
@@ -130,8 +131,9 @@ export const Link = styled(NavLink) `
         margin-bottom: 0;
         
         svg{
-           width: 3.55rem ;
-           height: 3.5rem;
+           width: 2.5rem ;
+           height: 2.5rem;
+           margin: 0;
         }
         &.active{ 
         &::after{

@@ -11,8 +11,28 @@ export const Container = styled.div `
     align-items: center;
     display: flex;
     justify-content: center;
-`
 
+
+
+ 
+`
+export const LoginInput = styled.input `
+    width: 80%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    margin-top: 0.5rem;
+    @media screen and (max-width: 768px){
+        width: 70%
+        
+    
+    }
+    
+
+`
 
 export const DivForm = styled.div `
  
@@ -25,7 +45,8 @@ export const DivForm = styled.div `
     align-items: center;
     flex-direction: column;
     @media screen and (max-width: 768px){
-        width: 90vw
+        width: 100vw;
+        height: 100vh;
     
     }
 `
@@ -57,77 +78,29 @@ flex-direction: column;
 margin-left: 150px;
 `
 
-export const Button = styled.button `
-    --primary-color: #ff3700;
-    --secondary-color: #fff;
-    --hover-color:  #1E232E;
-    --arrow-width: 15px;
-    --arrow-stroke:2px;
-    
-    box-sizing: border-box;
-    border: 0;
-    color: var(--secondary-color);
-    padding: 0.5em 1.2em;
-    background: var(--primary-color);
-    display: flex;
-    transition: 0.2s background;
-    align-items: center;
-    gap: 0.6em;
-    font-weight: bold;
-    margin: 15px;
-    margin-left: 25px;
+export const SubmitInput = styled.input `
     width: 80%;
-    display: flex;
-    justify-content: center;
-  
-  
-  .arrow-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .arrow {
-    margin-top: 1px;
-    width: var(--arrow-width);
-    background: var(--primary-color);
-    height: var(--arrow-stroke);
-    position: relative;
-    transition: 0.2s;
-  }
-  
-  .arrow::before {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    border: solid var(--secondary-color);
-    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
-    display: inline-block;
-    top: -3px;
-    right: 3px;
-    transition: 0.2s;
-    padding: 3px;
-    transform: rotate(-45deg);
-  }
-  
-  :hover {
-    background-color: var(--hover-color);
+    background-color: ${({theme})=> theme.colors.red};
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-  }
-  
-  :hover .arrow {
-    background: var(--secondary-color);
-  }
-  
-  :hover .arrow:before {
-    right: 0;
-  }
-  `
 
+    &:hover { 
+        background-color: ${({theme})=> theme.colors.yellow};
+        color: #333;
+    }
+
+    
+
+`
 
 export const EyeButton = styled.button `
 width: 25px;
 background-color: black;
+border: none;
 :hover {
     cursor: pointer;
 }
