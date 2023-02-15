@@ -56,7 +56,7 @@ export function Sidebar ( )  {
                             </span>
                         </Link>
 
-                        <Link to ="mainpage">
+                        <Link to ="cart">
 
                             <BsCart  color='#FFF'/>
                             <span>

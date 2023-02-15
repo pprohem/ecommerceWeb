@@ -1,6 +1,5 @@
 
 import { Outlet } from 'react-router-dom';
-
 import logoImg from '../../assets/logo.svg';
 import { Sidebar } from '../../components/Sidebar';
 import { Container, SectionLogo } from './styles';
