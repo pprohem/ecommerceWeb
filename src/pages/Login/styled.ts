@@ -155,6 +155,7 @@ export const LoginInput = styled.input `
 
 export const SubmitInput = styled.button `
     width: 80%;
+    height: 50px;
     background-color: ${({theme})=> theme.colors.red};
     color: white;
     padding: 14px 20px;

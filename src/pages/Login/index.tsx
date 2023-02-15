@@ -72,8 +72,8 @@ export default function LoginPage () {
                         </FormGroup>
                        
                         <FormGroup>
-                            <SubmitInput onClick={handleSignIn} value="LOGIN" type="submit"     
-                            />
+                            <SubmitInput onClick={handleSignIn} type="submit"> SIGN IN </SubmitInput>      
+                            
                         </FormGroup>
                         
                         <DivText>

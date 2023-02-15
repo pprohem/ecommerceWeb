@@ -12,8 +12,8 @@ export default function Main() {
   return (
     <Container>
       <Sidebar />
-      <SectionLogo>
-        <img src={logoImg} />
+        <SectionLogo>
+          <img src={logoImg} />
         <Outlet />
       </SectionLogo>
     </Container>
