@@ -1,13 +1,17 @@
+import { useContext } from "react";
 import Head from "../../../components/Head";
-import { ActionTitle, Button, ButtonCheckout, Container, ContentDiv, DivAbout, DivAmount, DivCart, DivCheckout, DivCounter, DivHeader, DivPrices, DivRemove, DivSave, DivSubAndItems, DivTotal, DivTotalAmount, HeaderTitle, ImageBox, ImgProduct, Items, LineBreak, Number, Subtitle, Subtotal, Title } from "./styled";
+import { CartContext } from "../../../context/CartContext/cart";
+import { currencyFormat } from "../../../helpers/currencyFormat";
+import { ActionTitle, Button, ButtonCheckout, Container, ContentDiv, DivAbout, DivAmount, DivCart, DivCheckout, DivCounter, DivHeader, DivPrices, DivRemove, DivSubAndItems, DivTotal, DivTotalAmount, HeaderTitle, ImageBox, ImgProduct, Items, LineBreak, Number, Subtotal, Title } from "./styled";
 
 export default function CartPage () { 
     
-    
-    
-    
-    
-    
+    const {
+        productsCart, clearCart, handleAddItemToCart, handleRemoveItemToCart, removalItem} = useContext(CartContext); 
+        
+        // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+        let totalPrice: number = 0; 
+
     return( 
             <Container>
             <Head title='Carrinho 💸' description="Realize seu pedido"/>
@@ -18,56 +22,36 @@ export default function CartPage () {
                         <ActionTitle>Remove All</ActionTitle>
                     </DivHeader>
                    
-                    <DivCart>
+
+                   {productsCart?.map((products) => { 
+                        const subTotal: number = products.price * products.quantidade ;
+                        totalPrice += subTotal; 
+                        return (
+                            <DivCart key={products.id}>
                         
-                        <ImageBox>
-                            <ImgProduct src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQcHbxCjB7FY6Rttw1VZFdh0gIZmm4MLLjfmD0dhA11saxBKG_D49VVkmlvz3sE71-b" />
-                        </ImageBox>
-                        
-                        <DivAbout>
-                            <Title>Pizza Teste</Title>
-                            <Subtitle>Grande</Subtitle>
-                        </DivAbout>
+                                <ImageBox>
+                                    <ImgProduct src={products.imageUrl} />
+                                </ImageBox>
+                                
+                                <DivAbout>
+                                    <Title>{products.name}</Title>
+                                </DivAbout>
 
-                        <DivCounter>
-                             <Button>+</Button>
-                              <Number>1</Number>
-                             <Button>-</Button>
-                        </DivCounter>
+                                <DivCounter>
+                                    <Button 
+                                    onClick={() => {handleRemoveItemToCart(products.id)}}>-</Button>
+                                    <Number>{products.quantidade}</Number>
+                                    <Button 
+                                    onClick={() => {handleAddItemToCart(products.id, products.name, products.imageUrl, products.price)}}>+</Button>
+                                </DivCounter>
 
-                        <DivPrices>
-                            <DivAmount>$ 72.99</DivAmount>
-                            <DivSave><u>Save for later</u></DivSave>
-                            <DivRemove> <u>Remove</u></DivRemove>
-                        </DivPrices>
-                    </DivCart>
-
-
-                    <DivCart>
-                        
-                        <ImageBox>
-                            <ImgProduct src="https://svb.org.br/images/bacio.jpg" />
-                        </ImageBox>
-                        
-                        <DivAbout>
-                            <Title>Gelato Teste</Title>
-                            <Subtitle>Medio</Subtitle>
-                        </DivAbout>
-
-                        <DivCounter>
-                             <Button>+</Button>
-                              <Number>4</Number>
-                             <Button>-</Button>
-                        </DivCounter>
-
-                        <DivPrices>
-                            <DivAmount>$ 89.99</DivAmount>
-                            <DivSave><u>Save for later</u></DivSave>
-                            <DivRemove> <u>Remove</u></DivRemove>
-                        </DivPrices>
-
-                    </DivCart>
-
+                                <DivPrices>
+                                    <DivAmount>{currencyFormat(subTotal)}</DivAmount>
+                                    <DivRemove> <u onClick={() => {removalItem(products.id)}}>Remove</u></DivRemove>
+                                </DivPrices>
+                            </DivCart>
+                        )
+                   })}
                     
                     <LineBreak />
                         
@@ -75,9 +59,9 @@ export default function CartPage () {
                             <DivTotal>
                                 <DivSubAndItems>
                                     <Subtotal>Subtotal</Subtotal>
-                                    <Items>5 items</Items>
+                                    <Items>{productsCart.length} items</Items>
                                 </DivSubAndItems>
-                                <DivTotalAmount>$162.98</DivTotalAmount>
+                                <DivTotalAmount>{currencyFormat(totalPrice)}</DivTotalAmount>
                             </DivTotal>
                             
                             <DivSubAndItems>

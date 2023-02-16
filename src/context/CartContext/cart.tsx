@@ -1,8 +1,15 @@
 import { createContext, ReactNode, useState } from "react";
-export const CartContext = createContext({});
 
 
+export const CartContext = createContext<CartContextData>({} as CartContextData);
 
+interface CartContextData {
+  productsCart: IProduct[];
+  handleAddItemToCart: (id: number, name: string, imageUrl: string, price: number) => void;
+  handleRemoveItemToCart: (id: number) => void;
+  removalItem: (id: number) => void;
+  clearCart: () => void;
+}
 interface CartProviderProps {
   children: ReactNode;
 }
@@ -17,7 +24,7 @@ interface IProduct {
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [productsCart, setProductsCart] = useState<IProduct[]>([]);
-
+  
 
   function handleAddItemToCart(id: number, name: string, imageUrl: string, price: number) {
     const itemObject = [...productsCart];
