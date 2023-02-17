@@ -11,7 +11,7 @@ export const Container = styled.aside<ContainerProps> `
     
 
     ${({isMenuOpen}) => 
-     isMenuOpen ? css`width: 16.3rem; ` : css `width: 7.75rem; `
+     isMenuOpen ? css`width: 16.3rem; ` : css `width: 7.40rem; `
     }
 
 
@@ -89,8 +89,8 @@ export const Link = styled(NavLink) `
 
     svg{
         fill: ${({theme}) => theme.colors.white};
-        width: 4rem;
-        height: 4rem;
+        width: 3.5rem;
+        height: 3.5rem;
         transition: fill 0.3s;
         margin-bottom: 0.5rem;
     }
