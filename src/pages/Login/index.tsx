@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import logoImg from '../../assets/logo.svg';
 import { useAuth } from '../../context/AuthProvider/useAuth';
+import api2 from '../../services/api';
 import {
     BoxLogin, Container, ContentDiv, DivAlign, DivText, EyeButton, FormGroup, FormLogin,
     ImageDiv, ImageLogin, Link, Log, LoginCard, LoginInput, LoginLabel, SubmitInput
@@ -16,21 +18,33 @@ export default function LoginPage () {
     const [password, setPassword] = useState("");
 
 
+
+
     const togglePassword = () => {
         setPasswordShown(!passwordShown);
         
       };
 
-      async function handleSignIn () { 
-        try {
-           await  auth.authenticate(username, password)
 
-           navigate("/mainpage")
-        } catch (error) {
-            console.log(error)
-        }
-      }
-      
+       const handleSignIn = () => { 
+        api2
+        .post("/auth/signin", {
+          username: username,
+          password: password,
+        })
+        .then((request) => {
+          toast.success("Login successful !");
+          auth.authenticate(request.data);
+          navigate("/");
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message);
+        });
+    };
+    
+
+
+    
     return(
         
         <Container>
@@ -72,7 +86,7 @@ export default function LoginPage () {
                         </FormGroup>
                        
                         <FormGroup>
-                            <SubmitInput onClick={handleSignIn} type="submit"> SIGN IN </SubmitInput>      
+                            <SubmitInput onClick={handleSignIn}  type="submit"> SIGN IN </SubmitInput>      
                             
                         </FormGroup>
                         

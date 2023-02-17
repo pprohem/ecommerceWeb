@@ -14,7 +14,7 @@ export default function CartPage () {
 
     return( 
             <Container>
-            <Head title='Carrinho 💸' description="Realize seu pedido"/>
+            <Head title={`🛒 : ${productsCart.length} itens`} description="Realize seu pedido"/>
                 <ContentDiv>
                     
                     <DivHeader>

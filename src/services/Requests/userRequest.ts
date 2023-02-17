@@ -1,4 +1,4 @@
-import { api2 } from "../api";
+import api2 from "../api";
 
 
 type DataProps = { 

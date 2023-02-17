@@ -28,7 +28,7 @@ export function Sidebar ( )  {
             <Navbar>
                 <ul>
                     <li>
-                        <Link to="mainpage">
+                        <Link to="/">
                             <BurgerIcon  />
                             <span>
                                 Hamburguer

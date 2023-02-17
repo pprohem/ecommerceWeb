@@ -37,7 +37,7 @@ export default function Cards ({cards}: CardsProps) {
                         card.imageUrl, 
                         card.price
                     )
-                    toast(`Produto: ${card.name} adicionado ao carrinho!`, {
+                    toast(`${card.name} adicionado ao carrinho!`, {
                         position: "top-center",
                         autoClose: 800,
                         hideProgressBar: true,
